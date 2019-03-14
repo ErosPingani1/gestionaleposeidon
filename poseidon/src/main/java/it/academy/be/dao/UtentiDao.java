@@ -16,11 +16,11 @@ public class UtentiDao {
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		
 		try {
-			Class.forName ("com.mysql.jdbc.Driver").newInstance();
+			Class.forName ("com.mysql.cj.jdbc.Driver").newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
 			System.out.println(e);
-		} 
-		return DriverManager.getConnection ("jdbc:mysql://localhost:3306/db_poseidon?"+"user=uposeidon&password=canistrabici"); 
+		}
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/db_poseidon?"+"user=uposeidon&password=canistrabici"); 
 	}
 	
 	public List<Utente> findAll() throws DBException {
@@ -36,6 +36,7 @@ public class UtentiDao {
 		ResultSet rs = null;
 		
 		try {
+			System.out.println("Sono nel try di findAll");
 			connection = getConnection();
 			pstm = connection.prepareStatement(sql.toString());
 			rs = pstm.executeQuery();
