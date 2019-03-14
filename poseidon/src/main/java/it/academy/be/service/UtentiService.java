@@ -2,17 +2,17 @@ package it.academy.be.service;
 
 import java.util.List;
 
-import it.academy.be.dao.UtentiDao;
-import it.academy.be.dto.Utente;
+import it.academy.be.dao.ClientiDao;
+import it.academy.be.dto.Cliente;
 import it.academy.be.exception.DBException;
 
 public class UtentiService {
 
-	private UtentiDao dao = new UtentiDao();
+	private ClientiDao dao = new ClientiDao();
 	
-	public List<Utente> findUtenti(int pagina, int itemPerPagina) throws DBException {
+	public List<Cliente> findUtenti(int pagina, int itemPerPagina) throws DBException {
 		
-		List<Utente> list = dao.findAll();
+		List<Cliente> list = dao.findAll();
 		
 		int totElementi = list.size();
 		int fromIndex = -1;
@@ -26,17 +26,17 @@ public class UtentiService {
 		return list.subList(fromIndex, toIndex);
 	}
 	
-	public List<Utente> findUtenti() throws DBException {
+	public List<Cliente> findUtenti() throws DBException {
 		
 		return dao.findAll();
 	}
 
-	public Utente findByName(String query) throws DBException {
+	public Cliente findByName(String query) throws DBException {
 
-		Utente result = null;
+		Cliente result = null;
 		
-		List<Utente> cacheUtenti = dao.findAll();
-		for(Utente utente : cacheUtenti) {
+		List<Cliente> cacheUtenti = dao.findAll();
+		for(Cliente utente : cacheUtenti) {
 			
 			if (utente.getNome().equalsIgnoreCase(query)) {
 				result = utente;

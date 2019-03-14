@@ -8,24 +8,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.academy.be.dto.Utente;
+import it.academy.be.dto.Cliente;
 import it.academy.be.exception.DBException;
 
-public class UtentiDao {
+public class ClientiDao {
 
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
-		
 		try {
 			Class.forName ("com.mysql.cj.jdbc.Driver").newInstance();
 		} catch (InstantiationException | IllegalAccessException e) {
 			System.out.println(e);
 		}
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/db_poseidon?"+"user=uposeidon&password=canistrabici"); 
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/db_poseidon?"+"user=uposeidon&password=canistrabici&serverTimezone=UTC");
 	}
 	
-	public List<Utente> findAll() throws DBException {
+	public List<Cliente> findAll() throws DBException {
 		
-		List<Utente> result = new ArrayList<>();
+		List<Cliente> result = new ArrayList<>();
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ID, NOME, COGNOME, DATA_NASCITA");
@@ -43,14 +42,14 @@ public class UtentiDao {
 			
 			while(rs.next()) {
 				
-				Utente utente = new Utente();
+				Cliente cliente = new Cliente();
 				
-				utente.setId(rs.getInt("ID"));
-				utente.setNome(rs.getString("NOME"));
-				utente.setCognome(rs.getString("COGNOME"));
-				utente.setDate(rs.getDate("DATA_NASCITA"));
+				cliente.setId(rs.getInt("ID"));
+				cliente.setNome(rs.getString("NOME"));
+				cliente.setCognome(rs.getString("COGNOME"));
 				
-				result.add(utente);
+				
+				result.add(cliente);
 			}
 		} catch(Exception e) {
 			

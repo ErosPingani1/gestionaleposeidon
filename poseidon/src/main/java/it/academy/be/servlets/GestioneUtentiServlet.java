@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import it.academy.be.dto.Utente;
+import it.academy.be.dto.Cliente;
 import it.academy.be.exception.DBException;
 import it.academy.be.service.UtentiService;
 
@@ -33,7 +33,7 @@ public class GestioneUtentiServlet extends HttpServlet {
 			
 			if ("ricercaPagina".equalsIgnoreCase(requestPath)) {
 				
-				List<Utente> list = findPaged(req);
+				List<Cliente> list = findPaged(req);
 				
 				ObjectMapper objmapper = new ObjectMapper();
 				String jsonContent = objmapper.writeValueAsString(list);
@@ -41,7 +41,7 @@ public class GestioneUtentiServlet extends HttpServlet {
 				
 			} else if ("ricercaNome".equalsIgnoreCase(requestPath)) {
 				
-				Utente utente = findByName(req);
+				Cliente utente = findByName(req);
 				
 				if (utente == null) {
 					resp.getWriter().print("Nessun utente trovato con il nome ricercato");
@@ -53,7 +53,7 @@ public class GestioneUtentiServlet extends HttpServlet {
 
 			} else if ("ricercaCompleta".equalsIgnoreCase(requestPath)) {
 				
-				List<Utente> list = findAll(req);
+				List<Cliente> list = findAll(req);
 				
 				ObjectMapper objmapper = new ObjectMapper();
 				String jsonContent = objmapper.writeValueAsString(list);
@@ -68,13 +68,13 @@ public class GestioneUtentiServlet extends HttpServlet {
 		}
 	}
 	
-	private List<Utente> findAll(HttpServletRequest req) throws DBException {
+	private List<Cliente> findAll(HttpServletRequest req) throws DBException {
 		
 		UtentiService service = new UtentiService();
 		return service.findUtenti();
 	}
 
-	private Utente findByName(HttpServletRequest req) throws DBException {
+	private Cliente findByName(HttpServletRequest req) throws DBException {
 		
 		String query = req.getParameter("q");
 		
@@ -82,7 +82,7 @@ public class GestioneUtentiServlet extends HttpServlet {
 		return service.findByName(query);
 	}
 
-	private List<Utente> findPaged(HttpServletRequest req) throws DBException {
+	private List<Cliente> findPaged(HttpServletRequest req) throws DBException {
 
 		int pagina = Integer.parseInt(req.getParameter("p"));
 		int itemPerPagina = Integer.parseInt(req.getParameter("i"));
