@@ -8,9 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import it.academy.be.dto.Cliente;
 import it.academy.be.exception.DBException;
 import it.academy.be.service.UtentiService;
@@ -72,6 +70,7 @@ public class GestioneUtentiServlet extends HttpServlet {
 		
 		UtentiService service = new UtentiService();
 		return service.findUtenti();
+		
 	}
 
 	private Cliente findByName(HttpServletRequest req) throws DBException {
