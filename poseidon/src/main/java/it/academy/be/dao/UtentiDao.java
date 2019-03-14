@@ -21,7 +21,6 @@ public class UtentiDao {
 	
 	public List<Utente> findAll() throws DBException {
 		
-		//QUI SI SPACCAVA
 		List<Utente> result = new ArrayList<>();
 		
 		StringBuilder sql = new StringBuilder();
