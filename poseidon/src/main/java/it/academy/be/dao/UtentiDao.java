@@ -15,8 +15,12 @@ public class UtentiDao {
 
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		
-		Class.forName ("org.h2.Driver"); 
-		return DriverManager.getConnection ("jdbc:h2:~/test", "sa",""); 
+		try {
+			Class.forName ("com.mysql.jdbc.Driver").newInstance();
+		} catch (InstantiationException | IllegalAccessException e) {
+			System.out.println(e);
+		} 
+		return DriverManager.getConnection ("jdbc:mysql://localhost:3306/db_poseidon?"+"user=uposeidon&password=canistrabici"); 
 	}
 	
 	public List<Utente> findAll() throws DBException {
