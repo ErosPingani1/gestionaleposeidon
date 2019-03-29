@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Affitto {
 	private int idaffitto;
-	private String idcliente;
+	private int idcliente;
 	private int idfilm;
 	private Date dataaffitto;
 	private Date datarestituzione;
@@ -15,10 +15,11 @@ public class Affitto {
 	public void setIdaffitto(int i) {
 		this.idaffitto = i;
 	}
-	public String getIdcliente() {
+	
+	public int getIdcliente() {
 		return idcliente;
 	}
-	public void setIdcliente(String idcliente) {
+	public void setIdcliente(int idcliente) {
 		this.idcliente = idcliente;
 	}
 	public int getIdfilm() {
