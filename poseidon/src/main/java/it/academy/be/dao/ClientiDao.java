@@ -27,8 +27,8 @@ public class ClientiDao {
 		List<Cliente> result = new ArrayList<>();
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT ID, NOME, COGNOME, DATA_NASCITA");
-		sql.append(" FROM UTENTE");
+		sql.append("SELECT ID, NOME, COGNOME, INDIRIZZO, CITTA, PROVINCIA, CAP");
+		sql.append(" FROM CLIENTI");
 		
 		Connection connection = null;
 		PreparedStatement pstm = null;
@@ -39,6 +39,7 @@ public class ClientiDao {
 			connection = getConnection();
 			pstm = connection.prepareStatement(sql.toString());
 			rs = pstm.executeQuery();
+			System.out.println("Oplà");
 			
 			while(rs.next()) {
 				
@@ -47,7 +48,10 @@ public class ClientiDao {
 				cliente.setId(rs.getInt("ID"));
 				cliente.setNome(rs.getString("NOME"));
 				cliente.setCognome(rs.getString("COGNOME"));
-				
+				cliente.setIndirizzo(rs.getString("INDIRIZZO"));
+				cliente.setCittà(rs.getString("CITTA"));
+				cliente.setProvincia(rs.getString("PROVINCIA"));
+				cliente.setCAP(rs.getString("CAP"));
 				
 				result.add(cliente);
 			}
