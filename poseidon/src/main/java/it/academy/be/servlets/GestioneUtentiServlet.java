@@ -13,7 +13,7 @@ import it.academy.be.dto.Cliente;
 import it.academy.be.exception.DBException;
 import it.academy.be.service.UtentiService;
 
-@WebServlet("/gestioneUtenti/*")
+@WebServlet("/gestioneUtentijkdf/*")
 public class GestioneUtentiServlet extends HttpServlet {
 
 	@Override
