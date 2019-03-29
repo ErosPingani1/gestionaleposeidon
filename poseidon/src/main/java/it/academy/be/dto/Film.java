@@ -7,7 +7,8 @@ public class Film {
 	private String regista;
 	private String genere;
 	private int copiedisponibili;
-	private boolean eliminato;
+	private String errore;
+	
 	
 	public int getId() {
 		return id;
@@ -39,17 +40,11 @@ public class Film {
 	public void setCopiedisponibili(int copiedisponibili) {
 		this.copiedisponibili = copiedisponibili;
 	}
-	public boolean isEliminato() {
-		return eliminato;
-	}
-	public void setEliminato(boolean eliminato) {
-		this.eliminato = eliminato;
-	}
 	
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", titolo=" + titolo + ", regista=" + regista + ", genere=" + genere
-				+ ", copiedisponibili=" + copiedisponibili + ", eliminato=" + eliminato + "]";
+				+ ", copiedisponibili=" + copiedisponibili+"]";
 	}
 
 }
