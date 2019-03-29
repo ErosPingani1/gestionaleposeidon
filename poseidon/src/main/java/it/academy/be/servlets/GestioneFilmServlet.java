@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Find;
 
-import it.academy.be.dao.FilmDao;
 import it.academy.be.dto.Film;
 import it.academy.be.exception.DBException;
 import it.academy.be.service.FilmService;
